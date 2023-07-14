@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { BsFillBagCheckFill } from "react-icons/Bs";
+import { BsFillBagCheckFill } from "react-icons/bs";
 
 import Link from "next/link";
 import {
@@ -9,8 +9,8 @@ import {
   AiFillMinusCircle,
   AiFillCheckCircle,
   AiFillDelete,
-} from "react-icons/Ai";
-import { MdAccountCircle } from "react-icons/Md";
+} from "react-icons/ai";
+import { MdAccountCircle } from "react-icons/md";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
