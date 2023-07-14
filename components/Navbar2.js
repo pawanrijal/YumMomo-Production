@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { BsFillBagCheckFill } from "react-icons/Bs";
+
 import Link from "next/link";
 import {
   AiFillCloseCircle,

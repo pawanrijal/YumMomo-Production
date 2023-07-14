@@ -1,5 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import trace from 'stack-trace';
+
+
 import '../styles/globals.css'
 import React, {useEffect} from 'react';
 import { useState } from 'react';
