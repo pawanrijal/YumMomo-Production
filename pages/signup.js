@@ -11,7 +11,7 @@ const Signup = () => {
     if (localStorage.getItem("token")) {
       router.push("/");
     }
-  }, []);
+  }, [router]);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

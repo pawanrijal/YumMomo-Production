@@ -14,7 +14,7 @@ const Login = () => {
     if (localStorage.getItem("myuser")) {
       router.push("/");
     }
-  }, []);
+  }, [router]);
   
 
   const handleChange  = (e) => {

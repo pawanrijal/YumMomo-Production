@@ -25,7 +25,7 @@ const MyAccount = () => {
           fetchData(myuser.token)
           
         }
-    }, []);
+    }, [router]);
 
     const fetchData = async(token)=> {
       let data = {token: token}

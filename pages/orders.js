@@ -24,7 +24,7 @@ const Orders = () => {
     } else {
       fetchOrders();
     }
-  }, []);
+  }, [router]);
   return (
     <>
       <div className="container mx-auto min-h-screen">

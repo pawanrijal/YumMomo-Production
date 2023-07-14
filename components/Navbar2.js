@@ -34,7 +34,7 @@ const NavBar2 = ({
     if (exempted.includes(router.pathname)) {
       setSidebar(false);
     }
-  }, []);
+  }, [cart, router.pathname]);
 
   const toggleCart = () => {
     // if (ref.current.classList.contains('translate-x-full')) {
