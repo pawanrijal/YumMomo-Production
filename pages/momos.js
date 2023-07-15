@@ -18,19 +18,19 @@ const momos = ({ products }) => {
   return (
     <>
       <section className="text-gray-600 body-font">
-        <div className="container px-5 py-10 mx-auto">
-          <div className="flex flex-wrap">
+        <div className="container lg:px-5 lg:py-10 mx-auto">
+          <div className="flex flex-wrap justify-center lg:justify-normal md:justify-normal">
                 {products.map((item) => {
                     return (
                       <Link key={item._id} href={`/products/${item.slug}`}>
-                    <div className="flex m-3 shadow-lg p-4 rounded-lg">
-                    <div className="my-4" >
-                      <div className="block relative h-48">
+                    <div className="flex m-3 shadow-md hover:shadow-xl transition-all cursor-pointer p-2  rounded-lg">
+                    <div className="" >
+                      <div className="block ">
                         <Image
                           alt="ecommerce"
-                          className="object-cover object-center w-full h-full block rounded-md"
-                          width={100}
-                          height={100}
+                          className="object-cover  object-center block rounded-md"
+                          width={200}
+                          height={200}
                           src={"/momo.jpeg"}
                         />
                       </div>

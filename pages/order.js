@@ -36,8 +36,7 @@ const MyOrder = ({order, subTotal}) => {
         }
         <h1 className='my-10 font-bold text-xl'>SubTotal: ${subTotal}</h1>
       </div>
-    <Image width={700} height={700} alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded-xl shadow-md" src="/momo3.jpeg"></Image>
-      <p className='mx-auto my-10 text-red-500'>If you need to make any changes to quantity, please checkout again through your bag.</p>
+    <Image width={400} height={200} alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded-xl shadow-md" src="/momo3.jpeg"></Image>
     </div>
   </div>
 </section>

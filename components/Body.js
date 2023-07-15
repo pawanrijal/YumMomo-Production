@@ -6,15 +6,15 @@ const Body = () => {
   return (
     <>
       <section className="text-gray-600 body-font">
-        <div className="container mx-auto flex px-5 py-16 items-center justify-center flex-col">
+        <div className="container mx-auto flex px-5 py-8 items-center justify-center flex-col">
           <Image
-            width={720}
-            height={600}
-            className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded-xl shadow-lg"
+            width={600}
+            height={400}
+            className="lg:w-2/6 md:w-3/6 w-5/6 object-cover object-center rounded-lg shadow-lg"
             alt="hero"
             src="/momo3.jpeg"
           />
-          <div className="text-center lg:w-2/3 w-full">
+          <div className="text-center lg:w-2/3 w-full mt-7">
             <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
               Microdosing synth tattooed vexillologist
             </h1>

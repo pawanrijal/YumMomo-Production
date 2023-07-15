@@ -31,7 +31,7 @@ const NavBar2 = ({
   useEffect(() => {
     Object.keys(cart).length === 0 && setSidebar(true);
 
-    let exempted = ["/checkout", "/orders", "/order", "/myaccount", "/momos", "/", "/about", "/contact", "/login", "/signup"];
+    let exempted = ["/checkout", "/orders", "/order", "/myaccount", "/momos", "/", "/about", "/contact", "/login", "/signup", "/admin"];
     if (exempted.includes(router.pathname)) {
       setSidebar(false);
     }
@@ -51,34 +51,34 @@ const NavBar2 = ({
   const ref = React.useRef();
   return (
     <>
-      <header className={`text-gray-600 body-font shadow-md`}>
+      <header className={`text-gray-600 body-font nav shadow-md`}>
         <div
           className={`container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center ${
             !sidebar && "overflow-hidden"
           }`}
         >
-          <nav className="flex lg:w-2/5 flex-wrap items-center md:ml-auto sm:ml-auto text-sm lg:text-lg">
+          <nav className="flex lg:w-2/5 flex-wrap items-center md:ml-auto space-x-3 sm:ml-auto text-sm lg:text-lg">
             <Link
               href={"/"}
-              className="mr-5 hover:text-gray-900 cursor-pointer font-bold"
+              className=" hover:text-red-500 cursor-pointer"
             >
               Home
             </Link>
             <Link
               href={"/about"}
-              className="mr-5 hover:text-gray-900 cursor-pointer font-bold"
+              className=" hover:text-red-500 cursor-pointer"
             >
               About Us
             </Link>
             <Link
               href={"/contact"}
-              className="mr-5 hover:text-gray-900 cursor-pointer font-bold"
+              className=" hover:text-red-500 cursor-pointer"
             >
               Contact Us
             </Link>
             <Link
               href={"/feedback"}
-              className="hover:text-gray-900 cursor-pointer font-bold"
+              className="hover:text-red-500 cursor-pointer"
             >
               FeedBack
             </Link>

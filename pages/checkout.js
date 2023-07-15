@@ -80,13 +80,15 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart}) => {
       address,
       Total: subTotal,
       phone,
+      name,
+      city,
   }
   let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pretransaction`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(data)
   });
   let response = await res.json();
   if (response.success) {
