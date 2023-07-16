@@ -24,6 +24,11 @@ const Menuitems = [
     icon: "shopping-cart",
     href: "/admin/allorders",
   },
+  {
+    title: "Feedbacks",
+    icon: "message-square",
+    href: "/admin/feedbacks",
+  },
 ];
 
 export default Menuitems;

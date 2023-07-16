@@ -29,23 +29,15 @@ const NavBar2 = ({
   const router = useRouter();
 
   useEffect(() => {
-    Object.keys(cart).length === 0 && setSidebar(true);
-
+    if(Object.keys(cart).length === 0 && setSidebar(true)){
     let exempted = ["/checkout", "/orders", "/order", "/myaccount", "/momos", "/", "/about", "/contact", "/login", "/signup", "/admin"];
     if (exempted.includes(router.pathname)) {
       setSidebar(false);
     }
+  }
   }, [cart, router.pathname]);
 
   const toggleCart = () => {
-    // if (ref.current.classList.contains('translate-x-full')) {
-    //   ref.current.classList.remove('translate-x-full');
-    //   ref.current.classList.add('translate-x-0');
-    // }
-    // else {
-    //   ref.current.classList.remove('translate-x-0');
-    //   ref.current.classList.add('translate-x-full');
-    // }
     setSidebar(!sidebar);
   };
   const ref = React.useRef();
@@ -65,22 +57,22 @@ const NavBar2 = ({
               Home
             </Link>
             <Link
+              href={"/momos"}
+              className=" hover:text-red-500 cursor-pointer"
+            >
+              Menus
+            </Link>
+            <Link
               href={"/about"}
               className=" hover:text-red-500 cursor-pointer"
             >
               About Us
             </Link>
             <Link
-              href={"/contact"}
+              href={"/feedback"}
               className=" hover:text-red-500 cursor-pointer"
             >
-              Contact Us
-            </Link>
-            <Link
-              href={"/feedback"}
-              className="hover:text-red-500 cursor-pointer"
-            >
-              FeedBack
+              Feedback
             </Link>
           </nav>
           <div className="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0">
@@ -155,8 +147,8 @@ const NavBar2 = ({
 
             <div
               ref={ref}
-              className={`shadow-2xl h-[100vh] sidecart overflow-y-scroll absolute w-72 top-0 bg-red-200 px-8 py-10 rounded-2xl transition-all ${
-                sidebar ? "right-0" : "right-full"
+              className={`shadow-2xl h-[100vh] sidecart overflow-y-scroll absolute w-72 top-0 bg-red-200 px-8 py-10 rounded-2xl transition-all duration-500 ease-in-out ${
+                !sidebar ? "right-0" : "-right-96"
               } transform z-10`}
             >
               <h2 className="font-bold text-xl text-center mb-3">Your Bag</h2>
@@ -171,6 +163,7 @@ const NavBar2 = ({
                   <p className="text-center">
                     No items in your bag at the moment!
                   </p>
+                  
                 )}
                 {Object.keys(cart).map((k) => {
                   return (

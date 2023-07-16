@@ -16,14 +16,12 @@ const Body = () => {
           />
           <div className="text-center lg:w-2/3 w-full mt-7">
             <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-              Microdosing synth tattooed vexillologist
+            &quot;Delight in the Divine Flavors of Yum-Momo&apos;s Irresistible Dumplings!&quot;
             </h1>
             <p className="mb-8 leading-relaxed">
-              Meggings kinfolk echo park stumptown DIY, kale chips beard
-              jianbing tousled. Chambray dreamcatcher trust fund, kitsch vice
-              godard disrupt ramps hexagon mustache umami snackwave tilde
-              chillwave ugh. Pour-over meditation PBR&B pickled ennui celiac
-              mlkshk freegan photo booth af fingerstache pitchfork.
+            Yum-Momo is a culinary haven dedicated to crafting exquisite and authentic dumplings that will transport your taste buds to the bustling streets of Nepal. 
+            With our secret family recipes passed down through generations, we meticulously handcraft each dumpling, ensuring a perfect balance of flavors and textures. 
+            From the delicate folds of our steamed momos to the delectable crispness of our pan-fried varieties, Yum-Momo offers a culinary experience that will leave you craving more of our tantalizing momos.
             </p>
             <div className="flex justify-center">
               <Link href={"/momos"}><button className="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg">

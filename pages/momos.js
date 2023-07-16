@@ -28,7 +28,7 @@ const momos = ({ products }) => {
                       <div className="block ">
                         <Image
                           alt="ecommerce"
-                          className="object-cover  object-center block rounded-md"
+                          className="object-cover object-center block rounded-xl"
                           width={200}
                           height={200}
                           src={"/momo.jpeg"}

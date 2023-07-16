@@ -8,44 +8,29 @@ import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
 import TimelineDot from "@mui/lab/TimelineDot";
 import BaseCard from "../baseCard/BaseCard";
 
-const activities = [
-  {
-    time: "09.50",
-    color: "success.main",
-    text: "Meeting with John",
-  },
-  {
-    time: "09.46",
-    color: "secondary.main",
-    text: "Payment received from John Doe of $385.90",
-  },
-  {
-    time: "09.47",
-    color: "primary.main",
-    text: "Project Meeting",
-  },
-  {
-    time: "09.48",
-    color: "warning.main",
-    text: "New Sale recorded #ML-3467",
-  },
-  {
-    time: "09.49",
-    color: "error.main",
-    text: "Payment was made of $64.95 to Michael Anderson",
-  },
-];
 
-const DailyActivity = () => {
+
+const DailyActivity = ({feedbacks}) => {
+  const formatDate = (date) => {
+    const d = new Date(date);
+    return d.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+    });
+  };
+  
   return (
-    <BaseCard title="Daily Activity">
+    <BaseCard title="FeedBacks">
       <Timeline
         sx={{
           p: 0,
         }}
       >
-        {activities.map((activity) => (
-          <TimelineItem key={activity.time}>
+        {feedbacks.map((items) => (
+          <TimelineItem key={items._id}>
             <TimelineOppositeContent
               sx={{
                 fontSize: "12px",
@@ -53,13 +38,13 @@ const DailyActivity = () => {
                 flex: "0",
               }}
             >
-              {activity.time}
+              {items.name} ({items.email}) ({formatDate(items.createdAt)})
             </TimelineOppositeContent>
             <TimelineSeparator>
               <TimelineDot
                 variant="outlined"
                 sx={{
-                  borderColor: activity.color,
+                  borderColor: "success.main",
                 }}
               />
               <TimelineConnector />
@@ -70,7 +55,7 @@ const DailyActivity = () => {
                 fontSize: "14px",
               }}
             >
-              {activity.text}
+              {items.message}
             </TimelineContent>
           </TimelineItem>
         ))}
@@ -80,3 +65,7 @@ const DailyActivity = () => {
 };
 
 export default DailyActivity;
+
+
+
+

@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import Navbar2 from '../components/Navbar2';
 import { useRouter } from 'next/router';
 import LoadingBar from 'react-top-loading-bar';
+import { toast } from 'react-toastify';
 
 function MyApp({ Component, pageProps }) {
   const [cart, setCart] = useState({})
@@ -31,6 +32,9 @@ function MyApp({ Component, pageProps }) {
     const myuser = JSON.parse(localStorage.getItem("myuser"));
     if (myuser) {
       setUser({value:myuser.token, email:myuser.email})
+    }
+    else {
+      setUser({value:null})
     }
     setKey(Math.random())
     
@@ -101,6 +105,7 @@ const addToCart = (itemCode, qty, price, name) => {
     setKey(Math.random())
     router.push("/")
   }
+
 
   return (
     <>

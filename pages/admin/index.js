@@ -8,9 +8,10 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "../../src/theme/theme";
 import mongoose from "mongoose";
 import Product from "../../models/Product";
+import Feedback from "../../models/Feedback";
 
 
-export default function Index({products}) {
+export default function Index({products, feedbacks}) {
   return (
     <>
     <style jsx global>{`
@@ -30,7 +31,7 @@ export default function Index({products}) {
       </Grid>
       {/* ------------------------- row 1 ------------------------- */}
       <Grid item xs={12} lg={4}>
-        <DailyActivity />
+        <DailyActivity feedbacks={feedbacks} />
       </Grid>
       <Grid item xs={12} lg={8}>
         <AllProducts products={products}/>
@@ -50,7 +51,8 @@ export const getServerSideProps = async (context) => {
     await mongoose.connect(process.env.MONGO_URI);
   }
   const products = await Product.find();
+  const feedbacks = await Feedback.find();
   return {
-    props: { products: JSON.parse(JSON.stringify(products)) },
+    props: { products: JSON.parse(JSON.stringify(products)), feedbacks: JSON.parse(JSON.stringify(feedbacks)) },
   };
 };
