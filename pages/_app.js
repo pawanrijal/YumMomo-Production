@@ -106,6 +106,8 @@ const addToCart = (itemCode, qty, price, name) => {
     router.push("/")
   }
 
+  
+
 
   return (
     <>

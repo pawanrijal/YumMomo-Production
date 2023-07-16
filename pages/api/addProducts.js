@@ -1,5 +1,6 @@
 import Product from "../../models/Product.js";
 import connectDb from "../../middleware/mongoose.js";
+import { useEffect } from "react";
 
 const handler = async (req, res) => {
   if (req.method === "POST") {
@@ -20,6 +21,7 @@ const handler = async (req, res) => {
     } catch (error) {
       console.log(error);
       res.status(500).json({ error: "Internal Server Error" });
+
     }
   } else {
     res.status(400).json({ error: "Invalid request" });
