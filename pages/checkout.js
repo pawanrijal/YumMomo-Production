@@ -36,7 +36,7 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart}) => {
   
   const fetchData = async(token)=> {
     let data = {token: token}
-    let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getUser `, {
+    let a = await fetch('/api/getUser', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -83,7 +83,7 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart}) => {
       name,
       city,
   }
-  let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pretransaction`, {
+  let res = await fetch('/api/pretransaction', {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

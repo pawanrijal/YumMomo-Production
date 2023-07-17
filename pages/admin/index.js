@@ -25,7 +25,7 @@ const Index = () => {
       email,
       password,
     };
-    let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/adminLogin`, {
+    let res = await fetch('/api/adminLogin', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -52,7 +52,7 @@ const Index = () => {
         theme: "light",
       });
       setTimeout(() => {
-        router.push(`${process.env.NEXT_PUBLIC_HOST}/admin/main`);
+        router.push('/admin/main');
       }, 1500);
     }
     if (response.status == 400) {
