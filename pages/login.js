@@ -57,7 +57,7 @@ const Login = () => {
         theme: "light",
       });
       setTimeout(() => {
-        router.push(process.env.NEXT_PUBLIC_HOST);
+        router.push("/");
       }, 1500);
     } 
     if (response.status == 400) {
