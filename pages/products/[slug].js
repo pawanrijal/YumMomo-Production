@@ -4,7 +4,6 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import mongoose from "mongoose";
 import Product from "../../models/Product.js";
-import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
 export const getServerSideProps = async (context) => {
@@ -21,8 +20,6 @@ export const getServerSideProps = async (context) => {
 
 
 export default function Page({addToCart, products, buyNow}) {
-  //Q: why is product undefined?
-  //A: because the slug is not being passed in
   const router = useRouter()
   const { slug } = router.query
   

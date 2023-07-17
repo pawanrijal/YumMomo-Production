@@ -279,7 +279,7 @@ else{
             onClick={initiatePayment}
             className="disabled:bg-red-400 flex text-white bg-red-500 border-0 py-2 px-2 focus:outline-none hover:bg-gray-600 rounded text-sm"
           >
-            <span>Pay ${subTotal}</span>
+            <span>Place Order of ${subTotal}</span>
             <AiFillCheckCircle className="ml-1 mt-0.5" />
           </button>
         </div>

@@ -55,7 +55,7 @@ return formattedDate;
   return (
     <>
     <Grid container spacing={0}>
-      <Grid item xs={12} lg={12}>
+      <Grid item xs={12} lg={24}>
       <BaseCard title="All orders">
       <Table
         aria-label="simple table"
@@ -141,7 +141,7 @@ return formattedDate;
                       return (
                     <Typography key={key}>
                        
-                          <li>{order.products[key].name} (qty: {order.products[key].qty})</li>
+                          {order.products[key].name} (qty: {order.products[key].qty})
                          
                     </Typography>
                     );

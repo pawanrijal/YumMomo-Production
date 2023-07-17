@@ -32,8 +32,11 @@ const NavBar2 = ({
     if(Object.keys(cart).length === 0 && setSidebar(true)){
     let exempted = ["/checkout", "/orders", "/order", "/myaccount", "/momos", "/", "/about", "/contact", "/login", "/signup", "/admin"];
     if (exempted.includes(router.pathname)) {
+      setSidebar(true);
+    } else {
       setSidebar(false);
     }
+    
   }
   }, [cart, router.pathname]);
 

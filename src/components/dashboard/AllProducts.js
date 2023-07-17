@@ -26,7 +26,7 @@ const AllProducts = ({products}) => {
   
 
   return (
-    <BaseCard title="All Orders">
+    <BaseCard title="All Products">
       <Table
         aria-label="simple table"
         sx={{

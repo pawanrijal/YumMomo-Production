@@ -26,12 +26,12 @@ const momos = ({ products }) => {
                     <div className="flex m-3 shadow-md hover:shadow-xl transition-all cursor-pointer p-2  rounded-lg">
                     <div className="" >
                       <div className="block ">
-                        <Image
+                        <img
                           alt="ecommerce"
-                          className="object-cover object-center block rounded-xl"
+                          className="object-contain object-center block rounded-xl"
                           width={200}
                           height={200}
-                          src={"/momo.jpeg"}
+                          src = {`${item.image}`}
                         />
                       </div>
                       <div className="">

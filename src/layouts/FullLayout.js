@@ -50,7 +50,7 @@ const FullLayout = ({ children }) => {
       />
       <PageWrapper>
         <Container
-          maxWidth={false}
+          maxWidth="xl"
           sx={{
             paddingTop: "20px",
             paddingLeft: isSidebarOpen && lgUp ? "280px!important" : "",
