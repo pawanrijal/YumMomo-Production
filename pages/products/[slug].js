@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import mongoose from "mongoose";
 import Product from "../../models/Product.js";
 import "react-toastify/dist/ReactToastify.css";
+import { useState } from 'react';
 
 export const getServerSideProps = async (context) => {
   if (!mongoose.connections[0].readyState) {
@@ -24,7 +25,7 @@ export default function Page({addToCart, products, buyNow}) {
   const { slug } = router.query
   
   return <> 
-    <section className="text-gray-600 body-font">
+    <section className="text-gray-600 body-font min-h-screen">
   <div className="container px-5 py-20 mx-auto">
     <div className="lg:w-4/5 mx-auto flex flex-wrap">
       <div className='m-auto'>

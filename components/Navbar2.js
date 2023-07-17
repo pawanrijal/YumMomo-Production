@@ -30,13 +30,7 @@ const NavBar2 = ({
 
   useEffect(() => {
     if(Object.keys(cart).length === 0 && setSidebar(true)){
-    let exempted = ["/checkout", "/orders", "/order", "/myaccount", "/momos", "/", "/about", "/contact", "/login", "/signup", "/admin"];
-    if (exempted.includes(router.pathname)) {
-      setSidebar(true);
-    } else {
-      setSidebar(false);
-    }
-    
+      setSidebar(false)
   }
   }, [cart, router.pathname]);
 
@@ -151,7 +145,7 @@ const NavBar2 = ({
             <div
               ref={ref}
               className={`shadow-2xl h-[100vh] sidecart overflow-y-scroll absolute w-72 top-0 bg-red-200 px-8 py-10 rounded-2xl transition-all duration-500 ease-in-out ${
-                !sidebar ? "right-0" : "-right-96"
+                !sidebar ? "right-0" : "right-full"
               } transform z-10`}
             >
               <h2 className="font-bold text-xl text-center mb-3">Your Bag</h2>
