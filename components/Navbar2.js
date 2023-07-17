@@ -30,7 +30,10 @@ const NavBar2 = ({
 
   useEffect(() => {
     if(Object.keys(cart).length === 0 && setSidebar(true)){
-      setSidebar(false)
+      let exempted = ["/"]
+      if(!exempted.includes(router.pathname)){
+        setSidebar(true)
+      }
   }
   }, [cart, router.pathname]);
 
