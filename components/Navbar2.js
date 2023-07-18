@@ -29,12 +29,12 @@ const NavBar2 = ({
   const router = useRouter();
 
   useEffect(() => {
-    if(Object.keys(cart).length === 0 && setSidebar(true)){
-      let exempted = ["/"]
-      if(!exempted.includes(router.pathname)){
-        setSidebar(true)
-      }
-  }
+    Object.keys(cart).length === 0 && setSidebar(true);
+
+    let exempted = ["/checkout", "/orders", "/order", "/myaccount", "/momos", "/", "/about", "/contact", "/login", "/signup", "/feedback"];
+    if (exempted.includes(router.pathname)) {
+      setSidebar(true);
+    }
   }, [cart, router.pathname]);
 
   const toggleCart = () => {

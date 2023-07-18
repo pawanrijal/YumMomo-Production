@@ -30,7 +30,7 @@ const AddProduct = () => {
   }
   const submitForm = (e) => {
     e.preventDefault(); 
-    let a = fetch('http://localhost:3000/api/addProducts', {
+    let a = fetch('/api/addProducts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
