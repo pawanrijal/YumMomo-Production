@@ -56,6 +56,10 @@ const Signup = () => {
       progress: undefined,
       theme: "light",
     });
+    setTimeout(() => {
+      router.push("/login");
+    }
+    , 2000);
   };
 
 
