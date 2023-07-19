@@ -27,11 +27,11 @@ export default function Page({addToCart, products, buyNow}) {
   return <> 
     <section className="text-gray-600 body-font min-h-screen">
   <div className="container px-5 py-20 mx-auto">
-    <div className="lg:w-4/5 mx-auto flex flex-wrap">
-      <div className='m-auto'>
-      <Image height={300} width={300} alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded-lg" src = {"/cmomo.jpg"} />
+    <div className="lg:w-3/4 mx-auto  flex ">
+      <div className=''>
+      <img alt="ecommerce" className="lg:w-3/4 w-full lg:h-auto rounded-lg shadow-lg" src = {products.image} />
       </div>
-      <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+      <div className="lg:w-1/2 w-full mt-6">
         <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{products.title}</h1>
         <div className="flex mb-4">
           <span className="flex items-center my-3">
@@ -53,7 +53,7 @@ export default function Page({addToCart, products, buyNow}) {
           </span>
           
         </div>
-        <p className="leading-relaxed">{products.desc}</p>
+        <p className="leading-relaxed">Description: {products.desc}</p>
         <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
           
         </div>
