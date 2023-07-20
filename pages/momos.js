@@ -23,9 +23,9 @@ const momos = ({ products }) => {
                 {products.map((item) => {
                     return (
                       <Link key={item._id} href={`/products/${item.slug}`}>
-                    <div className="flex m-3 shadow-md hover:shadow-xl transition-all cursor-pointer p-2  rounded-lg">
-                    <div className="" >
-                      <div className="block ">
+                    <div className="flex m-3 shadow-md w-full lg:w-[14rem] hover:shadow-xl transition-all cursor-pointer p-3  rounded-lg">
+                    <div className="mx-auto" >
+                      <div className="block">
                         <img
                           alt="ecommerce"
                           className="object-contain object-center block rounded-xl"
