@@ -25,11 +25,11 @@ export default function Page({addToCart, products, buyNow}) {
   const { slug } = router.query
   
   return <> 
-    <section className="text-gray-600 body-font min-h-screen">
-  <div className="container px-5 py-20 mx-auto">
-    <div className="lg:w-3/4 mx-auto  flex ">
+    <section className="text-gray-600 body-font ">
+  <div className="container px-5 py-[35px] mx-auto">
+    <div className="lg:w-3/4 mx-auto flex-wrap mr-0 flex ">
       <div className=''>
-      <img alt="ecommerce" className="lg:w-3/4 w-full lg:h-auto rounded-lg shadow-lg" src = {products.image} />
+      <img alt="ecommerce" className="lg:w-2/3 w-full lg:h-auto rounded-lg shadow-lg" src = {products.image} />
       </div>
       <div className="lg:w-1/2 w-full mt-6">
         <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{products.title}</h1>
