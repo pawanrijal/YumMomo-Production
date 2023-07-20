@@ -6,6 +6,8 @@ import Navbar2 from '../components/Navbar2';
 import { useRouter } from 'next/router';
 import LoadingBar from 'react-top-loading-bar';
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 function MyApp({ Component, pageProps }) {
   const [cart, setCart] = useState({})
@@ -14,6 +16,7 @@ function MyApp({ Component, pageProps }) {
   const [key, setKey] = useState(0)
   const [progress, setProgress] = useState(0)
   const router = useRouter();
+  const [sidebar, setSidebar] = useState(false);
 
   
   useEffect(() => {
@@ -38,7 +41,7 @@ function MyApp({ Component, pageProps }) {
     }
     setKey(Math.random())
     
-  }, [router.query])
+  }, [router.query, router.pathname])
 
   const calcSubTotal = (cart) => {
     let subt = 0
@@ -74,7 +77,10 @@ const addToCart = (itemCode, qty, price, name) => {
   const clearCart = () => {
     setCart({})
     saveCart({})
+    toast.success("Bag Cleared!")
   }
+
+  
 
   const removeFromCart = (itemCode, qty, price, name) => {
     let newCart = cart
@@ -84,7 +90,6 @@ const addToCart = (itemCode, qty, price, name) => {
     if (newCart[itemCode].qty <= 0) {
       delete newCart[itemCode]
     }
-
     saveCart(newCart)
     setCart(newCart)
   }
@@ -111,6 +116,17 @@ const addToCart = (itemCode, qty, price, name) => {
 
   return (
     <>
+    <ToastContainer
+      position="top-center"
+      autoClose={500}
+      hideProgressBar={false}
+      newestOnTop={true}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+    />
     <LoadingBar color = "#f11946" progress = {progress} waitingTime = {500} onLoadFinished = {()=>setProgress(0)}/>
     <Navbar2 logout={logout} user = {user} key={key} cart = {cart} addToCart = {addToCart} removeFromCart = {removeFromCart} clearCart = {clearCart} subTotal = {subTotal}/>
     <Component buyNow = {buyNow} cart = {cart} addToCart = {addToCart} removeFromCart = {removeFromCart} clearCart = {clearCart} subTotal = {subTotal} {...pageProps} />
