@@ -5,11 +5,11 @@ import Link from "next/link";
 const Body = () => {
   return (
     <>
-      <section className="text-gray-600 body-font">
+      <section className="text-black">
         <div className="container mx-auto flex px-5 py-8 items-center justify-center flex-col">
           <Image
-            width={600}
-            height={400}
+            width= {500}
+            height={300}
             className="lg:w-2/6 md:w-3/6 w-5/6 object-cover object-center rounded-lg shadow-lg"
             alt="hero"
             src="/momo3.jpeg"

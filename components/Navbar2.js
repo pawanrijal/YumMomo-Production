@@ -27,19 +27,23 @@ const NavBar2 = ({
   const [dropdown, setDropdown] = useState(false);
   const [sidebar, setSidebar] = useState(false);
   const router = useRouter();
-
   useEffect(() => {
-    if(Object.keys(cart).length === 0 && setSidebar(true)){
-    let exempted = ["/checkout", "/orders", "/order", "/myaccount", "/momos", "/", "/about", "/contact", "/login", "/signup", "/admin"];
+    Object.keys(cart).length === 0 && setSidebar(true);
+    let exempted = ["/checkout", "/orders", "/order", "/myaccount", "/momos", "/", "/about", "/contact", "/login", "/signup", "/feedback"];
     if (exempted.includes(router.pathname)) {
+      setSidebar(true);
+    }
+    if (router.pathname === "/products/[slug]") {
       setSidebar(false);
     }
-  }
+
   }, [cart, router.pathname]);
 
+  
   const toggleCart = () => {
     setSidebar(!sidebar);
   };
+
   const ref = React.useRef();
   return (
     <>
@@ -140,18 +144,20 @@ const NavBar2 = ({
                 </Link>
               )}
               <BsFillBagCheckFill
-                onClick={toggleCart}
+                onClick={
+                  toggleCart
+                }
                 className="text-3xl text-red-500 hover:text-red-600 cursor-pointer"
               />
             </div>
 
             <div
               ref={ref}
-              className={`shadow-2xl h-[100vh] sidecart overflow-y-scroll absolute w-72 top-0 bg-red-200 px-8 py-10 rounded-2xl transition-all duration-500 ease-in-out ${
-                !sidebar ? "right-0" : "-right-96"
-              } transform z-10`}
+              className={`shadow-2xl h-[100vh] sidecart overflow-y-scroll absolute w-72 top-0 bg-red-200 px-8 py-10 rounded-2xl ${
+                !sidebar ? "right-0" : "right-full"
+               } transform z-10`}
             >
-              <h2 className="font-bold text-xl text-center mb-3">Your Bag</h2>
+              <h2 className="font-bold text-xl text-center mb-3">Your bag</h2>
               <span
                 onClick={toggleCart}
                 className="absolute top-2 right-2 cursor-pointer text-2xl text-red-500"
@@ -160,10 +166,9 @@ const NavBar2 = ({
               </span>
               <ol className="list-decimal font-semibold">
                 {Object.keys(cart).length == 0 && (
-                  <p className="text-center">
-                    No items in your bag at the moment!
+                  <p className="">
+                   ☞ No items in your bag at the moment! <br /> <span className="">☞ You can checkout the items you added and quick buy from here. <br /> ☞ Go ahead! Add some items and check your bag.</span>
                   </p>
-                  
                 )}
                 {Object.keys(cart).map((k) => {
                   return (
@@ -190,6 +195,7 @@ const NavBar2 = ({
                   );
                 })}
               </ol>
+                <p className="my-4 font-bold">Your Subtotal: ${subTotal}</p>
               <div className="flex space-x-3 my-3">
                 {Object.keys(cart).length === 0 ? (
                   <button
@@ -212,7 +218,7 @@ const NavBar2 = ({
                   onClick={clearCart}
                   className="disabled:bg-red-300 flex text-white bg-red-500 border-0 py-2 px-2 focus:outline-none hover:bg-red-600 rounded text-sm"
                 >
-                  <span>Clear Cart</span>
+                  <span>Clear Bag</span>
                   <AiFillDelete className="ml-1 mt-0.5" />
                 </button>
               </div>

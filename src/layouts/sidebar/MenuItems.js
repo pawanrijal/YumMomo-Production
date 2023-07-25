@@ -2,7 +2,7 @@ const Menuitems = [
   {
     title: "Dashboard",
     icon: "home",
-    href: "/admin",
+    href: "/admin/main",
   },
   {
     title: "Add Products",
@@ -13,11 +13,6 @@ const Menuitems = [
     title: "View Products",
     icon: "eye",
     href: "/admin/allproducts",
-  },
-  {
-    title: "Image Uploader",
-    icon: "image",
-    href: "/admin/imageuploader",
   },
   {
     title: "Orders",

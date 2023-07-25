@@ -34,7 +34,7 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
 
   const fetchData = async (token) => {
     let data = { token: token };
-    let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getUser `, {
+    let a = await fetch("/api/getUser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -87,16 +87,13 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
         name,
         city,
       };
-      let res = await fetch(
-        `${process.env.NEXT_PUBLIC_HOST}/api/pretransaction`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      let res = await fetch("/api/pretransaction", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
       let response = await res.json();
       if (response.success) {
         toast.success("Order created successfully", {
@@ -291,7 +288,7 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
             onClick={initiatePayment}
             className="disabled:bg-red-400 flex text-white bg-red-500 border-0 py-2 px-2 focus:outline-none hover:bg-gray-600 rounded text-sm"
           >
-            <span>Pay ${subTotal}</span>
+            <span>Place Order of ${subTotal}</span>
             <AiFillCheckCircle className="ml-1 mt-0.5" />
           </button>
         </div>

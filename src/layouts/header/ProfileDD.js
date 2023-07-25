@@ -1,7 +1,6 @@
 import React from "react";
 import FeatherIcon from "feather-icons-react";
-import Image from "next/image";
-import userimg from "../../../assets/images/users/user2.jpg";
+import { useState } from "react";
 import {
   Box,
   Menu,
@@ -13,7 +12,12 @@ import {
   Button,
   Divider,
 } from "@mui/material";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import jwt_decode from "jwt-decode";
+import { toast } from "react-toastify";
 const ProfileDD = () => {
+  const router = useRouter();
   const [anchorEl4, setAnchorEl4] = React.useState(null);
 
   const handleClick4 = (event) => {
@@ -23,7 +27,24 @@ const ProfileDD = () => {
   const handleClose4 = () => {
     setAnchorEl4(null);
   };
+  const [user, setUser] = useState(null);
+
+  const handleLogout = () => {
+    localStorage.removeItem("admin");
+    toast.success("Logged out Succesfully");
+    router.push("/admin");
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem("admin");
+    if (token) {
+      const decoded = jwt_decode(token);
+      setUser(decoded.email);
+    }
+  }, [router]);
+  
   return (
+    
     <>
       <Button
         aria-label="menu"
@@ -33,13 +54,6 @@ const ProfileDD = () => {
         onClick={handleClick4}
       >
         <Box display="flex" alignItems="center">
-          <Image
-            src={userimg}
-            alt={userimg}
-            width="30"
-            height="30"
-            className="roundedCircle"
-          />
           <Box
             sx={{
               display: {
@@ -64,7 +78,7 @@ const ProfileDD = () => {
                 ml: 1,
               }}
             >
-              Julia
+              {user}
             </Typography>
             <FeatherIcon icon="chevron-down" width="20" height="20" />
           </Box>
@@ -83,30 +97,10 @@ const ProfileDD = () => {
         }}
       >
         <Box>
-          <Box p={2} pt={0}>
-            <List
-              component="nav"
-              aria-label="secondary mailbox folder"
-              onClick={handleClose4}
-            >
-              <ListItemButton>
-                <ListItemText primary="Edit Profile" />
-              </ListItemButton>
-              <ListItemButton>
-                <ListItemText primary="Account" />
-              </ListItemButton>
-              <ListItemButton>
-                <ListItemText primary="Change Password" />
-              </ListItemButton>
-              <ListItemButton>
-                <ListItemText primary="My Settings" />
-              </ListItemButton>
-            </List>
-          </Box>
           <Divider />
           <Box p={2}>
             <Link to="/">
-              <Button fullWidth variant="contained" color="primary">
+              <Button onClick={handleLogout} fullWidth variant="outlined" color="primary">
                 Logout
               </Button>
             </Link>

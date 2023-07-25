@@ -4,8 +4,8 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import mongoose from "mongoose";
 import Product from "../../models/Product.js";
-import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import { useState } from 'react';
 
 export const getServerSideProps = async (context) => {
   if (!mongoose.connections[0].readyState) {
@@ -21,19 +21,17 @@ export const getServerSideProps = async (context) => {
 
 
 export default function Page({addToCart, products, buyNow}) {
-  //Q: why is product undefined?
-  //A: because the slug is not being passed in
   const router = useRouter()
   const { slug } = router.query
   
   return <> 
-    <section className="text-gray-600 body-font">
-  <div className="container px-5 py-20 mx-auto">
-    <div className="lg:w-4/5 mx-auto flex flex-wrap">
-      <div className='m-auto'>
-      <Image height={300} width={300} alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded-lg" src = {"/cmomo.jpg"} />
+    <section className="text-gray-600 body-font min-h-screen">
+  <div className="container px-5 lg:py-[150px] py-[50px] mx-auto">
+    <div className="lg:w-3/4 mx-auto flex-wrap mr-0 flex ">
+      <div className=''>
+      <img alt="ecommerce" className="lg:w-[20rem] lg:mr-10 w-full lg:h-auto rounded-lg shadow-lg" src = {products.image} />
       </div>
-      <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+      <div className="lg:w-1/2 w-full mt-6">
         <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{products.title}</h1>
         <div className="flex mb-4">
           <span className="flex items-center my-3">
@@ -55,7 +53,7 @@ export default function Page({addToCart, products, buyNow}) {
           </span>
           
         </div>
-        <p className="leading-relaxed">{products.desc}</p>
+        <p className="leading-relaxed">Description: {products.desc}</p>
         <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
           
         </div>

@@ -35,7 +35,7 @@ const Signup = () => {
       email,
       password,
     };
-    let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/signup`, {
+    let res = await fetch('/api/signup', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -56,6 +56,10 @@ const Signup = () => {
       progress: undefined,
       theme: "light",
     });
+    setTimeout(() => {
+      router.push("/login");
+    }
+    , 2000);
   };
 
 

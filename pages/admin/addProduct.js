@@ -20,7 +20,6 @@ import {
   import { toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
   import { ToastContainer } from 'react-toastify';
-  import UploadImage from '../../src/components/dashboard/UploadImage';
 
 
 
@@ -31,7 +30,7 @@ const AddProduct = () => {
   }
   const submitForm = (e) => {
     e.preventDefault(); 
-    let a = fetch('http://localhost:3000/api/addProducts', {
+    let a = fetch('/api/addProducts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -98,12 +97,12 @@ const AddProduct = () => {
             />
              <TextField onChange = {handleChange} value = {form.category?  form.category:""} name="category" label="Category" variant="outlined" />
              <TextField onChange = {handleChange} value = {form.price?  form.price:""} name="price" label="Price" variant="outlined" />
+             <TextField onChange = {handleChange} value = {form.image?  form.image:""} name="image" label="Image" variant="outlined" />
           </Stack>
           <br />
           <Button onClick={submitForm} variant="outlined" mt={2}>
             Submit
           </Button>
-          <UploadImage/>
         </BaseCard>
       </Grid>
     </Grid>

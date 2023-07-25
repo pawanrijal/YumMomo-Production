@@ -29,7 +29,7 @@ const MyAccount = () => {
 
     const fetchData = async(token)=> {
       let data = {token: token}
-      let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getUser `, {
+      let a = await fetch('/api/getUser', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -44,7 +44,7 @@ const MyAccount = () => {
 
     const handleUserSubmit = async() => {
     let data = {token: user.token, address, phone, name}
-    let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateUser `, {
+    let a = await fetch('/api/updateUser', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

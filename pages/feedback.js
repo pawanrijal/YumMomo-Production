@@ -23,7 +23,7 @@ const Feedback = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    let a = fetch('http://localhost:3000/api/feedback', {
+    let a = fetch('/api/feedback', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
