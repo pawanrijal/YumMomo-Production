@@ -295,14 +295,10 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
         <div className="mr-2">
           <form action="/api/checkSession" method="POST">
             <section>
-              <input
-                type="hidden"
-                value="price_1NX12dA3kdhK68pAOul5eaRy"
-                name="price"
-              />
+              <input type="hidden" value={JSON.stringify(cart)} name="cart" />
               <button
                 type="submit"
-                onClick={initiatePayment}
+                // onClick={initiatePayment}
                 className="disabled:bg-red-400 flex text-white bg-red-500 border-0 py-2 px-2 focus:outline-none hover:bg-gray-600 rounded text-sm"
               >
                 <span>Pay With Card</span>
