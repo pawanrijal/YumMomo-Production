@@ -12,42 +12,40 @@ import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-
-const Checkout = ({ cart, subTotal, addToCart, removeFromCart}) => {
+const Checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
   const Router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
-  const [user, setUser] = useState({value: null})
-
+  const [user, setUser] = useState({ value: null });
 
   useEffect(() => {
     const myuser = JSON.parse(localStorage.getItem("myuser"));
     if (myuser) {
-    if(myuser.token){
-      setUser(myuser)
-      setEmail(myuser.email)
-      fetchData(myuser.token)
+      if (myuser.token) {
+        setUser(myuser);
+        setEmail(myuser.email);
+        fetchData(myuser.token);
+      }
     }
-  }
-  }, [])
-  
-  const fetchData = async(token)=> {
-    let data = {token: token}
-    let a = await fetch('/api/getUser', {
+  }, []);
+
+  const fetchData = async (token) => {
+    let data = { token: token };
+    let a = await fetch("/api/getUser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({data})
+      body: JSON.stringify({ data }),
     });
-    let res = await a.json()
-    setName(res.name)
-    setPhone(res.phone)
-    setAddress(res.address)
-  }
+    let res = await a.json();
+    setName(res.name);
+    setPhone(res.phone);
+    setAddress(res.address);
+  };
 
   const handleChange = () => (e) => {
     if (e.target.name === "name") {
@@ -71,67 +69,71 @@ const Checkout = ({ cart, subTotal, addToCart, removeFromCart}) => {
   };
 
   const initiatePayment = async () => {
-    if (name.length != 0 && email.length != 0 && phone.length != 0 && address.length != 0 && city.length != 0) {
-    let oid = "OID" + Math.floor(Math.random() * 1000000000);
-    const data = {
-      orderId: oid,
-      email,
-      products: cart,
-      address,
-      Total: subTotal,
-      phone,
-      name,
-      city,
-  }
-  let res = await fetch('/api/pretransaction', {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data)
-  });
-  let response = await res.json();
-  if (response.success) {
-    toast.success("Order created successfully", {
-      position: "top-center",
-      autoClose: 1500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-    console.log(response);
-    setTimeout(() => {
-      Router.push(`/order?id=${response.data._id}`);
-    }, 1500);
-  }
-  else{
-    toast.error("Order creation failed", {
-      position: "top-center",
-      autoClose: 1500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-  }
-}
-else{
-  toast.error("Please fill all the fields", {
-    position: "top-center",
-    autoClose: 1500,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-  });
-}
+    if (
+      name.length != 0 &&
+      email.length != 0 &&
+      phone.length != 0 &&
+      address.length != 0 &&
+      city.length != 0
+    ) {
+      let oid = "OID" + Math.floor(Math.random() * 1000000000);
+      const data = {
+        orderId: oid,
+        email,
+        products: cart,
+        address,
+        Total: subTotal,
+        phone,
+        name,
+        city,
+      };
+      let res = await fetch("/api/pretransaction", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      let response = await res.json();
+      if (response.success) {
+        toast.success("Order created successfully", {
+          position: "top-center",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        console.log(response);
+        setTimeout(() => {
+          Router.push(`/order?id=${response.data._id}`);
+        }, 1500);
+      } else {
+        toast.error("Order creation failed", {
+          position: "top-center",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
+    } else {
+      toast.error("Please fill all the fields", {
+        position: "top-center",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
   };
   return (
     <div className="container px-4 sm:m-auto">
@@ -169,22 +171,25 @@ else{
             <label htmlFor="email" className="leading-7 text-sm text-gray-600">
               Email (Default)
             </label>
-            {user && user.token ? <input
-              value={user.email}
-              readOnly
-              type="email"
-              id="email"
-              name="email"
-              className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-            /> :<input
-            onChange={handleChange()}
-            value={email}
-            type="email"
-            id="email"
-            name="email"
-            className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-          /> }
-            
+            {user && user.token ? (
+              <input
+                value={user.email}
+                readOnly
+                type="email"
+                id="email"
+                name="email"
+                className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
+            ) : (
+              <input
+                onChange={handleChange()}
+                value={email}
+                type="email"
+                id="email"
+                name="email"
+                className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
+            )}
           </div>
         </div>
       </div>
@@ -243,7 +248,10 @@ else{
       <div className="sidecart right-0 px-8 py-10 my-2 rounded-lg  bg-red-200">
         <ol className="list-decimal font-semibold">
           {Object.keys(cart).length == 0 && (
-            <p className="text-center">No items in your bag at the moment! <br/> Please choose some items before checkout.</p>
+            <p className="text-center">
+              No items in your bag at the moment! <br /> Please choose some
+              items before checkout.
+            </p>
           )}
           {Object.keys(cart).map((k) => {
             return (
@@ -273,8 +281,9 @@ else{
         </ol>
         <div className="my-3"></div>
       </div>
-      
-        <div>
+
+      <div className="flex flex-row">
+        <div className="mr-2">
           <button
             onClick={initiatePayment}
             className="disabled:bg-red-400 flex text-white bg-red-500 border-0 py-2 px-2 focus:outline-none hover:bg-gray-600 rounded text-sm"
@@ -283,10 +292,24 @@ else{
             <AiFillCheckCircle className="ml-1 mt-0.5" />
           </button>
         </div>
-      
+        <div className="mr-2">
+          <form action="/api/checkSession" method="POST">
+            <section>
+              <input type="hidden" value={JSON.stringify(cart)} name="cart" />
+              <button
+                type="submit"
+                // onClick={initiatePayment}
+                className="disabled:bg-red-400 flex text-white bg-red-500 border-0 py-2 px-2 focus:outline-none hover:bg-gray-600 rounded text-sm"
+              >
+                <span>Pay With Card</span>
+                <AiFillCheckCircle className="ml-1 mt-0.5" />
+              </button>
+            </section>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
-
 
 export default Checkout;
