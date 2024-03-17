@@ -22,6 +22,7 @@
     "apexcharts": "^3.23.1",
     "clsx": "1.1.1",
     "crypto-js": "^4.1.1",
+    "dotenv": "^16.4.5",
     "feather-icons-react": "^0.5.0",
     "formidable": "^3.5.0",
     "fs-extra": "^11.1.1",

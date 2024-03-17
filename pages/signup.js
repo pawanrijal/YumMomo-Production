@@ -53,16 +53,7 @@ const Signup = () => {
       body: JSON.stringify(data),
     });
     if (res.status === 200) {
-      toast.success("Account Succesfully Created, Please login.", {
-      position: "top-center",
-      autoClose: 1500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      });
+      toast.success("Account Succesfully Created, Please login.", toastConfig);
         setTimeout(() => {
       router.push("/login");
     }
