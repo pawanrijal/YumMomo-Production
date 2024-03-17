@@ -4,6 +4,7 @@ import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
+import { toastConfig } from "../utils/toast-config";
 
 const Signup = () => {
   const router = useRouter();
@@ -16,6 +17,7 @@ const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const handleChange = () => (e) => {
     if (e.target.name === "name") {
       setName(e.target.value);
@@ -35,6 +37,14 @@ const Signup = () => {
       email,
       password,
     };
+    if(!name || !email || !password) {
+      toast.error("Please fill all the fields", toastConfig);
+      return;
+    }
+    if (password.length < 8) {
+      toast.error("Password must be at least 8 characters long", toastConfig);
+      return;
+    }
     let res = await fetch('/api/signup', {
       method: "POST",
       headers: {
@@ -42,11 +52,8 @@ const Signup = () => {
       },
       body: JSON.stringify(data),
     });
-    let response =  res;
-    setEmail("");
-    setName("");
-    setPassword("");
-    toast.success("Account Succesfully Created, Please login.", {
+    if (res.status === 200) {
+      toast.success("Account Succesfully Created, Please login.", {
       position: "top-center",
       autoClose: 1500,
       hideProgressBar: false,
@@ -55,11 +62,20 @@ const Signup = () => {
       draggable: true,
       progress: undefined,
       theme: "light",
-    });
-    setTimeout(() => {
+      });
+        setTimeout(() => {
       router.push("/login");
     }
     , 2000);
+    }
+    else {
+      toast.error("Unable to signup", toastConfig);
+    }
+    setEmail("");
+    setName("");
+    setPassword("");
+    
+  
   };
 
 

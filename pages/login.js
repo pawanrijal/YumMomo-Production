@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { toastConfig } from "../utils/toast-config";
 
 
 const Login = () => {
@@ -33,6 +34,15 @@ const Login = () => {
       email,
       password,
     };
+    if (!email || !password) {
+      toast.error("Please fill all the fields", toastConfig);
+      return;
+    }
+    if (password.length < 8) {
+      toast.error("Password must be at least 8 characters long", toastConfig);
+      return;
+    }
+    
     let res = await fetch(`/api/login`, {
       method: "POST",
       headers: {
@@ -46,16 +56,7 @@ const Login = () => {
       setPassword("");
       let { token, email } = await response.json();
       localStorage.setItem("myuser", JSON.stringify({token: token, email: email}));
-      toast.success("Logged in Succesfully", {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.success("Logged in Succesfully", toastConfig);
       setTimeout(() => {
         router.push("/");
       }, 1500);
